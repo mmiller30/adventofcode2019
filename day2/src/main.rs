@@ -3,11 +3,34 @@
 use std::fs;
 
 fn main() {
+
+    /* Part 1
     let mut program = parse_input();
     println!("input: {:?}", program);
 
     run_with(&mut program, 12, 2);
     println!("input: {:?}", program);
+    */
+
+    // Part 2
+    //fn main() -> usize {
+        let program = parse_input();
+        let mut noun = 0;
+        let mut verb = 0;
+    
+        for i in 0..=99 {
+            for j in 0..=99 {
+                if run_with(&mut program.clone(), i, j) == 19_690_720 {
+                    noun = i;
+                    verb = j;
+                    break;
+                }
+            }
+        }
+    
+        let answer = 100 * noun + verb;
+        println!("answer: {}", answer);
+
 }
 
 fn run(program: &mut [usize]) {
